@@ -1,0 +1,3 @@
+To look up a word in the dictionary, I know that the dictionary is sorted A-Z for English. I know what my word's first letter is, so if it's before the middle of the dictionary (like before M) then I can flip open the dictionary prior to the middle. 
+
+Once I'm in that earlier half, then if I'm before the letter then I know to search in the next half of this half, and if I'm after the letter I know to search in the previous half of this half. So effectively it's binary search but with a better start point since if I have a B word then I know it isn't far off from the front.
