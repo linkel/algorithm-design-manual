@@ -228,10 +228,19 @@ traverse both. When we're at 3, that is 2 steps so far, and there's no other nod
 with no other node to go to so we're done. Now we have to do the same subroutine for node 2. then 3, then 4. 
 
 
-b) I have an idea but I don't think it's there yet. If I look at the adjacency matrix generated and collect the ones that have row sums
-of 2 or more, these are triangle candidates. For each candidate, I go thru his connections to other nodes (the adjacency list value) and if they are
-in the candidate list then I populate a dictionary of k,v where key is the node the candidate is connected to and the value is the candidate (like flipping the adjacency list).
-Now as I go to the next candidates if they are in the flipped dictionary I see if their adjacency list values match the candidate k,v dictionary. If it does, then it's a triangle.
-TODO: go over this, refine, write code
+b) To get V * E time, we set up an adjacency list and an adjacency matrix. We can start at a vertex and look at the vertices that it is connected to (like values in its adjacency list entry).
+We do a doubly nested loop here, comparing each vertex to another one to see if matrix[v1][v2] is equal to 1. If it is, then we have a triangle.
+When we finish processing the vertex we add it to a set of "checked", because if we were at vertex 0 and found that none of vertices 1, 2, 3, and 4 it was
+connected to are connected to each other, then when we look at vertex 1 we can skip over comparing 0 to anything since we've already exhausted it--it can't be part of a triangle because we would have seen it checking through earlier.
+If we do this, then the time complexity of this search will be at most V * E. 
 
 
+> 5-18. [5] Consider a set of movies M 1 , M 2 , . . . , M k . There is a set of customers, each one
+of which indicates the two movies they would like to see this weekend. Movies are
+shown on Saturday evening and Sunday evening. Multiple movies may be screened
+at the same time.
+>
+> You must decide which movies should be televised on Saturday and which on Sun-
+day, so that every customer gets to see the two movies they desire. Is there a
+schedule where each movie is shown at most once? Design an efficient algorithm to
+find such a schedule if one exists.
