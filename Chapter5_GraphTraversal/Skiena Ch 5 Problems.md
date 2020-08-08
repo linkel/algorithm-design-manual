@@ -244,3 +244,27 @@ at the same time.
 day, so that every customer gets to see the two movies they desire. Is there a
 schedule where each movie is shown at most once? Design an efficient algorithm to
 find such a schedule if one exists.
+
+I at first tried to do this via hashmap of key being movie and value being the day, and going through a set of if conditions.
+But then it was easily defeated with something like:
+customer  movies
+1        a, b
+2        e ,f
+3        a, e
+
+where if I was greedily assigning a to sat and b to sun and e to sat and f to sun then customer 3 gets screwed. 
+
+Instead it seems like I should use graphs, since this is a problem in the graph section. 
+
+How about if we designate each movie as a node and then if a customer has a preference on movie, connect those two nodes with an edge.
+Then we see if the graph is two-colorable. If it is, then a schedule exists. We can traverse the graph and alternate colors, sticking the movie name into the appropriate Sat or Sunday set/list that it belongs to.
+Otherwise if it isn't two-colorable, then a schedule does not exist where the movie is shown as most once. 
+
+>5-19. [5] The diameter of a tree T = (V, E) is given by
+max δ(u, v)
+u,v∈V
+(where δ(u, v) is the number of edges on the path from u to v). Describe an efficient
+algorithm to compute the diameter of a tree, and show the correctness and analyze
+the running time of your algorithm.
+
+
