@@ -268,3 +268,25 @@ algorithm to compute the diameter of a tree, and show the correctness and analyz
 the running time of your algorithm.
 
 
+> 5-20. [5] Given an undirected graph G with n vertices and m edges, and an integer k,
+give an O(m + n) algorithm that finds the maximum induced subgraph H of G
+such that each vertex in H has degree ≥ k, or prove that no such graph exists. An
+induced subgraph F = (U, R) of a graph G = (V, E) is a subset of U of the vertices
+V of G, and all edges R of G such that both vertices of each edge are in U .
+
+Had some thoughts here about using DFS, but need to refine those thoughts.
+
+> 5-21. [6] Let v and w be two vertices in a directed graph G = (V, E). Design a linear-
+time algorithm to find the number of different shortest paths (not necessarily vertex
+disjoint) between v and w. Note: the edges in G are unweighted.
+
+Using breadth first search, we queue up each node connected to our current node and process it as usual. 
+If we have found w from v, we would start the counter, process the rest of this "level" of BFS and count up all the ones that are in this level. These would all be different shortest paths (not necessarily vertex disjoint, meaning they may overlap). All of the shortest paths found will be on the same level because this is unweighted. 
+
+> 5-22. [6] Design a linear-time algorithm to eliminate each vertex v of degree 2 from
+a graph by replacing edges (u, v) and (v, w) by an edge (u, w). We also seek to
+eliminate multiple copies of edges by replacing them with a single edge. Note that
+removing multiple copies of an edge may create a new vertex of degree 2, which has
+to be removed, and that removing a vertex of degree 2 may create multiple edges,
+which also must be removed.
+
